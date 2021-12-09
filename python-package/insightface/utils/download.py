@@ -65,7 +65,7 @@ def download_file(url, path=None, overwrite=False, sha1_hash=None):
             sha1_hash and not check_sha1(fname, sha1_hash)):
         dirname = os.path.dirname(os.path.abspath(os.path.expanduser(fname)))
         if not os.path.exists(dirname):
-            os.makedirs(dirname)
+            os.makedirs(dirname, exist_ok=True)
 
         print('Downloading %s from %s...' % (fname, url))
         r = requests.get(url, stream=True)
